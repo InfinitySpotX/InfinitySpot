@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Settings - InfinitySpot</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>⚙️ Settings</h1>
+
+    <!-- USER INFO -->
+    <div class="box">
+      <p>👤 Username: <span id="username"></span></p>
+      <p>📧 Email: <span id="email"></span></p>
+    </div>
+
+    <!-- ACTIONS -->
+    <button onclick="logout()">🚪 Logout</button>
+    <button onclick="deleteAccount()">🗑 Delete Account</button>
+
+  </div>
+
+  <script>
+    // LOAD USER DATA
+    document.getElementById("username").innerText = localStorage.getItem("username") || "Guest";
+    document.getElementById("email").innerText = localStorage.getItem("email") || "Not found";
+
+    // LOGOUT
+    function logout(){
+      localStorage.clear();
+      window.location.href = "index.html";
+    }
+
+    // DELETE ACCOUNT (LOCAL ONLY)
+    function deleteAccount(){
+      localStorage.clear();
+      alert("Account deleted");
+      window.location.href = "index.html";
+    }
+
+    // LOGIN CHECK
+    if(localStorage.getItem("loggedIn") !== "true"){
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>

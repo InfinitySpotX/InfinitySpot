@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Infinity Spot AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* 🌌 Animated Background */
+    body{
+      margin:0;
+      font-family:Arial;
+      color:white;
+      overflow:hidden;
+      background: linear-gradient(-45deg, #000, #2b0000, #000, #4a0000);
+      background-size: 400% 400%;
+      animation: bg 10s ease infinite;
+      height:100vh;
+    }
+
+    @keyframes bg{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    h2{
+      text-align:center;
+      color:#7A0000;
+      margin-top:10px;
+    }
+
+    /* Movie section */
+    #movies{
+      padding:10px;
+      text-align:center;
+    }
+
+    /* Chat area */
+    #chatArea{
+      position:fixed;
+      bottom:0;
+      width:100%;
+      background:#111;
+      padding:10px;
+      border-top:2px solid #7A0000;
+    }
+
+    input{
+      width:70%;
+      padding:10px;
+      border:none;
+      border-radius:8px;
+      background:#222;
+      color:white;
+    }
+
+    button{
+      padding:10px;
+      background:#7A0000;
+      color:white;
+      border:none;
+      border-radius:8px;
+    }
+
+    /* Answer box (NOW ABOVE INPUT) */
+    #a{
+      position:fixed;
+      bottom:70px;
+      width:90%;
+      left:5%;
+      background:#111;
+      padding:10px;
+      border-left:4px solid #7A0000;
+      color:#00ffcc;
+      border-radius:10px;
+      min-height:40px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>🎬 Infinity Spot AI</h2>
+
+<!-- 🎬 MOVIE SECTION -->
+<div id="movies">
+  <p>🎬 Movie 1 - Action Film</p>
+</div>
+
+<!-- 🤖 ANSWER (ABOVE INPUT BAR) -->
+<div id="a">👋 Ask something...</div>
+
+<!-- CHAT INPUT (BOTTOM) -->
+<div id="chatArea">
+  <input id="q" placeholder="Ask AI..." />
+  <button onclick="ask()">Send</button>
+</div>
+
+<script src="ai.js"></script>
+
+</body>
+</html>

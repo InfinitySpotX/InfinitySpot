@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile - InfinitySpot</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <h2>My Profile</h2>
+  </div>
+
+  <!-- PROFILE SECTION -->
+  <div class="profile-box">
+
+    <div class="profile-pic">👤</div>
+
+    <h2 id="username">JK</h2>
+
+    <p>Welcome to InfinitySpot 🚀</p>
+
+  </div>
+
+  <!-- USER POSTS -->
+  <h3 style="padding:10px;">My Posts</h3>
+  <div id="myPosts"></div>
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <button onclick="location.href='home.html'">🏠</button>
+    <button onclick="location.href='home.html'">➕ Post</button>
+    <button>👤 Profile</button>
+  </div>
+
+  <script>
+    // simple login check
+    if(localStorage.getItem("loggedIn") !== "true"){
+      window.location.href = "index.html";
+    }
+
+    // LOAD POSTS FROM FIREBASE (same DB)
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    let myPosts = document.getElementById("myPosts");
+
+    db.collection("posts")
+    .orderBy("time","desc")
+    .onSnapshot(snapshot => {
+
+      myPosts.innerHTML = "";
+
+      snapshot.forEach(doc => {
+        let p = doc.data();
+
+        if(p.user === "JK"){
+
+          let div = document.createElement("div");
+          div.className = "card";
+
+          div.innerHTML = `
+            <b>${p.user}</b>
+            <p>${p.content}</p>
+            ${p.image ? `<img src="${p.image}" class="post-img">` : ""}
+          `;
+
+          myPosts.appendChild(div);
+        }
+
+      });
+
+    });
+  </script>
+
+</body>
+</html>
