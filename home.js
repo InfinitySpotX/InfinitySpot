@@ -1,5 +1,4 @@
-// 🔥 Firebase Config
-const firebaseConfig = {
+//const firebaseConfig = {
   apiKey: "AIzaSyC8YUJxjoCJoMfsncLolXd-GfzvDxL7-i4",
   authDomain: "infinityspot-779bb.firebaseapp.com",
   projectId: "infinityspot-779bb",
@@ -14,76 +13,51 @@ const db = firebase.firestore();
 let feed = document.getElementById("feed");
 
 
-// =========================
-// MENU
-// =========================
+// ================= TOGGLE MENU =================
 function toggleMenu(){
-  let d = document.getElementById("dropdown");
-  d.style.display = (d.style.display === "block") ? "none" : "block";
+  const d = document.getElementById("dropdown");
+
+  if(!d) return;
+
+  if(d.style.display === "block"){
+    d.style.display = "none";
+  } else {
+    d.style.display = "block";
+  }
 }
 
 
-// =========================
-// CLOUDINARY UPLOAD FUNCTION
-// =========================
-async function uploadImage(file){
+// ================= ADD POST (TEXT ONLY FIXED) =================
+function addPost(){
 
-  let formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", "infinityspot");
+  const textEl = document.getElementById("postText");
+  if(!textEl) return;
 
-  let res = await fetch(
-    "https://api.cloudinary.com/v1_1/dxyjhrxmx/image/upload",
-    {
-      method: "POST",
-      body: formData
-    }
-  );
+  let text = textEl.value;
 
-  let data = await res.json();
-  return data.secure_url;
-}
-
-
-// =========================
-// ADD POST (TEXT + IMAGE)
-// =========================
-async function addPost(){
-
-  let text = document.getElementById("postText").value;
-  let file = document.getElementById("imageFile").files[0];
-
-  if(text.trim() === "" && !file) return;
-
-  let imageUrl = "";
-
-  if(file){
-    imageUrl = await uploadImage(file);
+  if(text.trim() === ""){
+    return;
   }
 
   db.collection("posts").add({
-    user: "JK",
+    user: localStorage.getItem("username") || "JK",
     content: text,
-    image: imageUrl,
     likes: 0,
     time: Date.now()
   });
 
-  document.getElementById("postText").value = "";
-  document.getElementById("imageFile").value = "";
+  textEl.value = "";
 }
 
 
-// =========================
-// REAL TIME FEED
-// =========================
+// ================= REAL TIME FEED =================
 db.collection("posts")
-.orderBy("time", "desc")
-.onSnapshot(snapshot => {
+.orderBy("time","desc")
+.onSnapshot(snapshot=>{
 
   feed.innerHTML = "";
 
-  snapshot.forEach(doc => {
+  snapshot.forEach(doc=>{
     let p = doc.data();
 
     let div = document.createElement("div");
@@ -93,10 +67,8 @@ db.collection("posts")
       <b>${p.user}</b>
       <p>${p.content}</p>
 
-      ${p.image ? `<img src="${p.image}" class="post-img">` : ""}
-
-      <button class="like-btn" onclick="likePost('${doc.id}', ${p.likes || 0})">
-        ❤️ <span>${p.likes || 0}</span>
+      <button onclick="likePost('${doc.id}', ${p.likes || 0})">
+        ❤️ ${p.likes || 0}
       </button>
     `;
 
@@ -106,9 +78,7 @@ db.collection("posts")
 });
 
 
-// =========================
-// LIKE SYSTEM
-// =========================
+// ================= LIKE =================
 function likePost(id, currentLikes){
 
   db.collection("posts").doc(id).update({
@@ -121,4 +91,22 @@ function likePost(id, currentLikes){
   setTimeout(() => {
     btn.classList.remove("pop");
   }, 300);
+}
+
+
+// ================= SCROLL + FOCUS =================
+function scrollToTop(){
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function focusPostBox(){
+  document.getElementById("postText").focus();
+}
+
+
+// ================= LOGOUT =================
+function logout(){
+  localStorage.removeItem("loggedIn");
+  localStorage.removeItem("username");
+  window.location.href = "index.html";
 }
