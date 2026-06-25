@@ -33,10 +33,20 @@ body{
   position:absolute;
   right:10px;
   top:60px;
-  background:#222;
+
+  width:180px;
   padding:10px;
-  border-radius:10px;
-  width:150px;
+
+  background: rgba(20, 20, 20, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius:12px;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+
+  z-index:9999;
 }
 
 /* CREATE POST */
@@ -127,4 +137,61 @@ body{
   color:white;
   font-size:16px;
   cursor:pointer;
+}
+.dropdown p{
+  padding:10px;
+  margin:5px 0;
+  cursor:pointer;
+  border-radius:8px;
+  transition:0.2s;
+  color:white;
+}
+
+.dropdown p:hover{
+  background: rgba(255,255,255,0.08);
+  transform: scale(1.02);
+}
+
+.dropdown p:hover{
+  background:#333;
+}
+
+.dropdown{
+  transform: scale(0.95);
+  opacity:0;
+  transition:0.2s ease;
+}
+
+.dropdown.show{
+  transform: scale(1);
+  opacity:1;
+}
+
+/* logout special */
+.danger{
+  color:red;
+}
+.dropdown{
+  display:none;
+  position:absolute;
+  right:10px;
+  top:60px;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-radius:12px;
+  padding:10px;
+  width:170px;
+
+  border:1px solid rgba(255,255,255,0.2);
+  box-shadow:0 0 15px rgba(0,0,0,0.4);
+
+  transition:0.2s ease;
+  z-index:999;
+}
+
+.dropdown.show{
+  display:block;
 }
