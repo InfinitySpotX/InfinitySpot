@@ -69,7 +69,7 @@ function searchMovie() {
 
   if (movie) {
     localStorage.setItem("movie", movie.title);
-    window.location.href = "watch.html";
+    window.location.href = "home.html";
   } else {
     alert("Movie not found!");
   }
@@ -90,14 +90,6 @@ if (player) {
     player.src = movie.video;
   } else {
     alert("Movie not found!");
-    window.location.href = "entertainment.html"; // Change if your home page name is different
+    window.location.href = "home.html"; // Change if your home page name is different
   }
-}
-
-// ===========================
-// MENU
-// ===========================
-
-function toggleMenu() {
-  document.querySelector(".menu").classList.toggle("show");
 }
