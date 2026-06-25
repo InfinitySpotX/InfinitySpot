@@ -6,7 +6,7 @@ const movies = [
   },
   {
     title: "Mareechika",
-    poster: "jk.jpg",
+    poster: "Mareechika",
     video: "https://www.youtube.com/embed/Bj6YTLGktnY?si=4jK9ERCVw1Zr_SzZ"
   },
   {
