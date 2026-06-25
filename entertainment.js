@@ -6,7 +6,7 @@ const movies = [
   },
   {
     title: "Mareechika",
-    poster: "Mareechika",
+    poster: "Mareechika.jpg",
     video: "https://www.youtube.com/embed/Bj6YTLGktnY?si=4jK9ERCVw1Zr_SzZ"
   },
   {
@@ -92,3 +92,12 @@ if (player) {
     alert("Movie not found!");
     window.location.href = "entertainment.html"; // Change if your home page name is different
   }
+}
+
+// ===========================
+// MENU
+// ===========================
+
+function toggleMenu() {
+  document.querySelector(".menu").classList.toggle("show");
+}
