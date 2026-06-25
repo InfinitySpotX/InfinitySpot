@@ -18,10 +18,10 @@
     <div class="menu" onclick="toggleMenu()">☰</div>
 
     <div id="dropdown" class="dropdown">
-      <p>📷 Camera</p>
+      <p onclick="location.href='game.html'">🎮 Game</p>
       <p>🎬 Entertainment</p>
-      <p>🤖 Chat with AI</p>
-      <p>⚙️ Settings</p>
+      <p onclick="location.href='ai.html'">🤖 Chat with AI</p>
+      <p onclick="location.href='settings.html'">⚙️ Settings</p>
       <p onclick="logout()">🚪 Logout</p>
     </div>
   </div>
@@ -32,8 +32,6 @@
     <!-- TEXT INPUT -->
     <input id="postText" type="text" placeholder="What's on your mind?">
 
-    <!-- IMAGE INPUT -->
-    <input id="imageFile" type="file" accept="image/*">
 
     <!-- POST BUTTON -->
     <button onclick="addPost()">Post</button>
