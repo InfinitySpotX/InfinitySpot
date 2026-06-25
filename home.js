@@ -15,17 +15,16 @@ let feed = document.getElementById("feed");
 
 // ================= TOGGLE MENU =================
 function toggleMenu(){
-  const d = document.getElementById("dropdown");
+  const menu = document.getElementById("dropdown");
 
-  if(!d) return;
+  if(!menu) return;
 
-  if(d.style.display === "block"){
-    d.style.display = "none";
+  if(menu.classList.contains("show")){
+    menu.classList.remove("show");
   } else {
-    d.style.display = "block";
+    menu.classList.add("show");
   }
 }
-
 
 // ================= ADD POST (TEXT ONLY FIXED) =================
 function addPost(){
