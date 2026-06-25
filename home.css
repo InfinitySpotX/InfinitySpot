@@ -156,16 +156,6 @@ body{
   background:#333;
 }
 
-.dropdown{
-  transform: scale(0.95);
-  opacity:0;
-  transition:0.2s ease;
-}
-
-.dropdown.show{
-  transform: scale(1);
-  opacity:1;
-}
 
 /* logout special */
 .danger{
