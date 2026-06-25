@@ -1,4 +1,4 @@
-//const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyC8YUJxjoCJoMfsncLolXd-GfzvDxL7-i4",
   authDomain: "infinityspot-779bb.firebaseapp.com",
   projectId: "infinityspot-779bb",
@@ -79,18 +79,11 @@ db.collection("posts")
 
 
 // ================= LIKE =================
-function likePost(id, currentLikes){
+function likePost(id, likes){
 
   db.collection("posts").doc(id).update({
-    likes: currentLikes + 1
+    likes: likes + 1
   });
-
-  let btn = event.target;
-  btn.classList.add("pop");
-
-  setTimeout(() => {
-    btn.classList.remove("pop");
-  }, 300);
 }
 
 
