@@ -1,11 +1,3 @@
-// Banner images
-const banners = [
-    "Aaro.jpg",
-    "Mareechika.jpg",
-    "Valayam.jpg",
-    "Maruvasham.jpg",
-];
-
 let current = 0;
 const heroImage = document.getElementById("heroImage");
 
