@@ -18,10 +18,10 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
+    padding:20px;
     background:linear-gradient(-45deg,#000000,#0d1b2a,#1b263b,#415a77);
     background-size:400% 400%;
     animation:bg 10s ease infinite;
-    padding:20px;
 }
 
 @keyframes bg{
@@ -35,20 +35,21 @@ body{
     max-width:380px;
     background:rgba(255,255,255,.08);
     backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.15);
     border-radius:20px;
     padding:30px;
     text-align:center;
     color:#fff;
-    border:1px solid rgba(255,255,255,.15);
     box-shadow:0 10px 35px rgba(0,0,0,.4);
 }
 
 .logo{
     font-size:45px;
+    margin-bottom:15px;
 }
 
 h1{
-    margin:15px 0;
+    margin-bottom:15px;
     font-size:32px;
 }
 
@@ -72,21 +73,31 @@ p{
 .loading{
     width:100%;
     height:8px;
-    background:#444;
+    background:#555;
     border-radius:50px;
     overflow:hidden;
+    margin:25px auto;
+    position:relative;
 }
 
 .bar{
+    position:absolute;
+    left:0;
+    top:0;
     width:0%;
     height:100%;
+    display:block;
     background:linear-gradient(90deg,#ff0000,#ff7300,#ffffff);
     animation:load 8s linear forwards;
 }
 
 @keyframes load{
-    from{width:0%;}
-    to{width:100%;}
+    0%{
+        width:0%;
+    }
+    100%{
+        width:100%;
+    }
 }
 
 .footer{
@@ -95,8 +106,8 @@ p{
     color:#bbb;
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <div class="card">
@@ -126,7 +137,7 @@ Coming in the Next Update
 
 <script>
 setTimeout(function(){
-    window.location.href="home.html";
+    window.location.href = "home.html";
 },8000);
 </script>
 
