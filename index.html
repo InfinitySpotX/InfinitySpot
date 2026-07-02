@@ -1,46 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>InfinitySpot</title>
-  <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinity Spot</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <div class="container">
+<div class="hero">
+    <img id="heroImage" src="" alt="Banner">
 
-    <h1>InfinitySpot 🚀</h1>
+    <div class="overlay">
+        <a href="movies.html" class="watch-btn">
+            ▶ Watch Now
+        </a>
+    </div>
+</div>
 
-    <!-- USERNAME -->
-    <input type="text" id="username" placeholder="Username">
-
-    <!-- EMAIL -->
-    <input type="email" id="email" placeholder="Email">
-
-    <!-- PASSWORD -->
-    <input type="password" id="password" placeholder="Password">
-
-    <!-- FAMILY CODE -->
-    <input type="text" id="familyCode" placeholder="Family Code">
-
-    <!-- BUTTONS -->
-    <button onclick="registerUser()">Register</button>
-
-    <button onclick="loginUser()">Login</button>
-
-  </div>
-
-  <!-- JS -->
-  <script type="module" src="script.js"></script>
-
-  <!-- 🔥 AUTO LOGIN CHECK -->
-  <script>
-    if(localStorage.getItem("loggedIn") === "true"){
-      window.location.href = "home.html";
-    }
-  </script>
-
+<script src="script.js"></script>
 </body>
 </html>)
