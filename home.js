@@ -1,97 +1,103 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyC8YUJxjoCJoMfsncLolXd-GfzvDxL7-i4",
-  authDomain: "infinityspot-779bb.firebaseapp.com",
-  projectId: "infinityspot-779bb",
-  storageBucket: "infinityspot-779bb.firebasestorage.app",
-  messagingSenderId: "716001400461",
-  appId: "1:716001400461:web:9fcb1a1ab1543b0d0474c4"
-};
-
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
-let feed = document.getElementById("feed");
-
-
-// ================= TOGGLE MENU =================
-function toggleMenu(){
-  const menu = document.getElementById("dropdown");
-
-  if(!menu) return;
-
-  if(menu.classList.contains("show")){
-    menu.classList.remove("show");
-  } else {
-    menu.classList.add("show");
+const movies = [
+  {
+    title: "Aaro",
+    poster: "Aaro.jpg",
+    video: "https://www.youtube.com/embed/v9jqDP7U8b8?si=GXxLEIJYgOorr8u5"
+  },
+  {
+    title: "Mareechika",
+    poster: "jk.jpg",
+    video: "https://www.youtube.com/embed/Bj6YTLGktnY?si=4jK9ERCVw1Zr_SzZ"
+  },
+  {
+    title: "Valayam",
+    poster: "Valayam.jpg",
+    video: "https://www.youtube.com/embed/2dI2DTsX3Ek?si=lJsssgtjDt8RShhI"
+  },
+  {
+    title: "Maruvasham",
+    poster: "Maruvasham.jpg",
+    video: "https://www.youtube.com/embed/OthoLwGgY6o?si=wQPP7Muvs6PMs9JG"
   }
+
+  // Add more movies here
+];
+
+// ===========================
+// HOME PAGE
+// ===========================
+
+const movieContainer = document.getElementById("movie-container");
+
+if (movieContainer) {
+  movies.forEach(movie => {
+    movieContainer.innerHTML += `
+      <div class="movie">
+        <img src="${movie.poster}" alt="${movie.title}">
+        <h3>${movie.title}</h3>
+
+        <button onclick="openMovie('${movie.title}')">
+          Watch Now
+        </button>
+      </div>
+    `;
+  });
 }
 
-// ================= ADD POST (TEXT ONLY FIXED) =================
-function addPost(){
+// ===========================
+// OPEN MOVIE
+// ===========================
 
-  const textEl = document.getElementById("postText");
-  if(!textEl) return;
+function openMovie(title) {
+  localStorage.setItem("movie", title);
+  window.location.href = "watch.html";
+}
 
-  let text = textEl.value;
+// ===========================
+// SEARCH MOVIE
+// ===========================
 
-  if(text.trim() === ""){
+function searchMovie() {
+  let input = document.getElementById("searchBox").value.trim().toLowerCase();
+
+  if (input === "") {
+    alert("Please enter a movie name!");
     return;
   }
 
-  db.collection("posts").add({
-    user: localStorage.getItem("username") || "JK",
-    content: text,
-    likes: 0,
-    time: Date.now()
-  });
+  const movie = movies.find(m => m.title.toLowerCase() === input);
 
-  textEl.value = "";
+  if (movie) {
+    localStorage.setItem("movie", movie.title);
+    window.location.href = "watch.html";
+  } else {
+    alert("Movie not found!");
+  }
 }
 
+// ===========================
+// WATCH PAGE
+// ===========================
 
-// ================= REAL TIME FEED =================
-db.collection("posts")
-.orderBy("time","desc")
-.onSnapshot(snapshot=>{
+const player = document.getElementById("player");
 
-  feed.innerHTML = "";
+if (player) {
+  const movieName = localStorage.getItem("movie");
 
-  snapshot.forEach(doc=>{
-    let p = doc.data();
+  const movie = movies.find(m => m.title === movieName);
 
-    let div = document.createElement("div");
-    div.className = "card";
-
-    div.innerHTML = `
-      <b>${p.user}</b>
-      <p>${p.content}</p>
-
-      <button onclick="likePost('${doc.id}', ${p.likes || 0})">
-        ❤️ ${p.likes || 0}
-      </button>
-    `;
-
-    feed.appendChild(div);
-  });
-
-});
-
-
-// ================= LIKE =================
-function likePost(id, likes){
-
-  db.collection("posts").doc(id).update({
-    likes: likes + 1
-  });
+  if (movie) {
+    player.src = movie.video;
+  } else {
+    alert("Movie not found!");
+    window.location.href = "index.html"; // Change if your home page name is different
+  }
 }
 
+// ===========================
+// MENU
+// ===========================
 
-// ================= SCROLL + FOCUS =================
-function scrollToTop(){
-  window.scrollTo({top:0, behavior:"smooth"});
-}
-
-function focusPostBox(){
-  document.getElementById("postText").focus();
-}
-
+function toggleMenu() {
+  document.querySelector(".menu").classList.toggle("show");
+  }
