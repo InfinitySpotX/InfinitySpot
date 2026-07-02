@@ -95,9 +95,7 @@ if (player) {
 }
 
 // ===========================
-// MENU
-// ===========================
-
+// MENU ================
 function toggleMenu() {
-  document.querySelector(".menu").classList.toggle("show");
-  }
+    document.getElementById("dropdown").classList.toggle("show");
+          }
