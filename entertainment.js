@@ -2,12 +2,12 @@
 const firebaseConfig = {
   apiKey: "AIzaSyAcyuhXTQb1wz4f8MWTlnUp5KI7kGfAm1k",
   authDomain: "infinityspot-78ac4.firebaseapp.com",
+  databaseURL: "https://infinityspot-78ac4-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "infinityspot-78ac4",
   storageBucket: "infinityspot-78ac4.firebasestorage.app",
   messagingSenderId: "321996507857",
   appId: "1:321996507857:web:0f263aeeeb2770bd3713f0"
 };
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
