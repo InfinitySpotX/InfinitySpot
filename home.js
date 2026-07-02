@@ -90,7 +90,7 @@ if (player) {
     player.src = movie.video;
   } else {
     alert("Movie not found!");
-    window.location.href = "watch.html"; // Change if your home page name is different
+    window.location.href = "home.html"; // Change if your home page name is different
   }
 }
 
