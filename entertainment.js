@@ -67,3 +67,22 @@ db.collection("posts")
     alert(error.message);
 
 });
+
+// ===========================
+// WATCH PAGE
+// ===========================
+
+const player = document.getElementById("player");
+
+if (player) {
+  const movieName = localStorage.getItem("movie");
+
+  const movie = movies.find(m => m.title === movieName);
+
+  if (movie) {
+    player.src = movie.video;
+  } else {
+    alert("Movie not found!");
+    window.location.href = "home.html"; // Change if your home page name is different
+  }
+}
