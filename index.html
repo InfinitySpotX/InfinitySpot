@@ -14,9 +14,18 @@
         <button class="start-btn" onclick="location.href='home.html'">
             START
         </button>
+      <button class="start-btn" onclick="startApp()">
+    START
+      </button>
     </div>
 </div>
   
-<script src="script.js"></script>
+  <script>
+function startApp(){
+    localStorage.setItem("opened","true");
+    window.location.href="home.html";
+}
+  </script>
+  
 </body>
 </html>
