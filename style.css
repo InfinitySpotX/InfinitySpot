@@ -71,3 +71,48 @@ body{
         transform:translateY(0);
     }
 }
+.start-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:40px;
+}
+
+.start-btn{
+    width:220px;
+    height:60px;
+    border:none;
+    border-radius:40px;
+    background:linear-gradient(45deg,#ff0000,#8b0000);
+    color:#fff;
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:2px;
+    cursor:pointer;
+    box-shadow:0 0 15px #ff0000;
+    animation:redGlow 1.8s infinite alternate;
+    transition:0.2s ease;
+}
+
+.start-btn:hover{
+    transform:scale(1.05);
+}
+
+.start-btn:active{
+    transform:scale(0.92);
+    background:#666;
+    box-shadow:0 0 8px #666;
+}
+
+@keyframes redGlow{
+    0%{
+        box-shadow:0 0 10px #ff0000;
+    }
+    50%{
+        box-shadow:0 0 25px #ff0000,
+                   0 0 45px #ff3333;
+    }
+    100%{
+        box-shadow:0 0 15px #ff0000;
+    }
+}
