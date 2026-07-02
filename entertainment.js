@@ -1,11 +1,12 @@
 // Firebase Config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAcyuhXTQb1wz4f8MWTlnUp5KI7kGfAm1k",
+  authDomain: "infinityspot-78ac4.firebaseapp.com",
+  databaseURL: "https://infinityspot-78ac4-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "infinityspot-78ac4",
+  storageBucket: "infinityspot-78ac4.firebasestorage.app",
+  messagingSenderId: "321996507857",
+  appId: "1:321996507857:web:30433a9d435365aa3713f0"
 };
 
 // Initialize
