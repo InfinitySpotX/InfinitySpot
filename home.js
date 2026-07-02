@@ -95,21 +95,3 @@ function focusPostBox(){
   document.getElementById("postText").focus();
 }
 
-
-// ================= LOGOUT =================
-function logout(){
-  localStorage.removeItem("loggedIn");
-  localStorage.removeItem("username");
-  window.location.href = "index.html";
-}
-
-// =========== go back ============
-function goBack(){
-
-  if(window.history.length > 1){
-    window.history.back();
-  }else{
-    window.location.href = "home.html";
-  }
-
-}
