@@ -1,36 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infinity Spot</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinity Spot</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    overflow:hidden;
+}
+
+.hero-bg{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#000000,#0d1b2a,#1b263b,#415a77);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.overlay{
+    text-align:center;
+    animation:fadeUp 1s ease;
+}
+
+h1{
+    color:#fff;
+    font-size:48px;
+    font-weight:bold;
+    letter-spacing:5px;
+    margin-bottom:40px;
+    text-shadow:0 0 20px rgba(255,255,255,.4);
+}
+
+.start-btn{
+    padding:15px 60px;
+    font-size:18px;
+    font-weight:bold;
+    color:#fff;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    background:linear-gradient(90deg,#ff0000,#ff4d4d);
+    box-shadow:0 0 20px rgba(255,0,0,.5);
+    transition:0.3s;
+}
+
+.start-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 35px rgba(255,0,0,.8);
+}
+
+.start-btn:active{
+    transform:scale(.95);
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
+
 </head>
 <body>
-  
+
 <div class="hero-bg">
     <div class="overlay">
         <h1>INFINITY SPOT</h1>
-      <button class="start-btn" onclick="startApp()">
-    START
-      </button>
+
+        <button class="start-btn" onclick="startApp()">
+            START
+        </button>
     </div>
 </div>
-  
-  <script>
+
+<script>
 function startApp(){
     localStorage.setItem("opened","true");
-    window.location.href="home.html";
-}
-  </script>
-  
-  <script>
-document.querySelector(".start-btn").addEventListener("click",function(){
+
     document.body.style.transition="0.5s";
     document.body.style.opacity="0";
-});
-  </script>
-  
-  <script src="script.js"></script>
+
+    setTimeout(function(){
+        window.location.href="home.html";
+    },500);
+}
+</script>
+
 </body>
 </html>
