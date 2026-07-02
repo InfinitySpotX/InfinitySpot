@@ -3,107 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coming Soon</title>
+<title>Infinity Spot</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
+   margin:0;
+   padding:0;
+   box-sizing:border-box;
+   font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    background:linear-gradient(-45deg,#000000,#0d1b2a,#1b263b,#415a77);
-    background-size:400% 400%;
-    animation:bg 10s ease infinite;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+overflow:hidden;
+background:linear-gradient(-45deg,#000,#0d1b2a,#1b263b,#415a77);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
 }
 
 @keyframes bg{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 .card{
-    width:100%;
-    max-width:380px;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:20px;
-    padding:30px;
-    text-align:center;
-    color:#fff;
-    box-shadow:0 10px 35px rgba(0,0,0,.4);
+width:90%;
+max-width:380px;
+padding:30px;
+text-align:center;
+border-radius:20px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+-webkit-backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 10px 35px rgba(0,0,0,.5);
+color:#fff;
+animation:fade 1s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 .logo{
-    font-size:45px;
-    margin-bottom:15px;
+font-size:55px;
+animation:float 2s ease-in-out infinite;
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-10px);
+}
 }
 
 h1{
-    margin-bottom:15px;
-    font-size:32px;
+margin:15px 0;
+font-size:34px;
+letter-spacing:2px;
+text-shadow:0 0 20px rgba(255,255,255,.5);
 }
 
 p{
-    color:#ddd;
-    line-height:1.7;
-    margin-bottom:25px;
+line-height:1.7;
+color:#ddd;
+margin-bottom:25px;
 }
 
 .update{
-    display:inline-block;
-    background:#ff3b30;
-    padding:12px 22px;
-    border-radius:30px;
-    font-weight:bold;
-    margin-bottom:25px;
+display:inline-block;
+padding:12px 25px;
+background:linear-gradient(90deg,#ff0000,#ff5a5a);
+border-radius:30px;
+font-weight:bold;
+box-shadow:0 0 20px rgba(255,0,0,.5);
+margin-bottom:25px;
 }
 
-/* Loading Bar */
-
 .loading{
-    width:100%;
-    height:8px;
-    background:#555;
-    border-radius:50px;
-    overflow:hidden;
-    margin:25px auto;
-    position:relative;
+width:100%;
+height:8px;
+background:#555;
+border-radius:50px;
+overflow:hidden;
 }
 
 .bar{
-    position:absolute;
-    left:0;
-    top:0;
-    width:0%;
-    height:100%;
-    display:block;
-    background:linear-gradient(90deg,#ff0000,#ff7300,#ffffff);
-    animation:load 8s linear forwards;
+width:0%;
+height:100%;
+background:linear-gradient(90deg,#ff0000,#ff7300,#ffffff);
+animation:load 8s linear forwards;
 }
 
 @keyframes load{
-    0%{
-        width:0%;
-    }
-    100%{
-        width:100%;
-    }
+from{
+width:0%;
+}
+to{
+width:100%;
+}
 }
 
 .footer{
-    margin-top:18px;
-    font-size:13px;
-    color:#bbb;
+margin-top:20px;
+font-size:13px;
+color:#bbb;
 }
 </style>
 
@@ -114,19 +131,19 @@ p{
 
 <div class="logo">🚀</div>
 
-<h1>Coming Soon</h1>
+<h1>COMING SOON</h1>
 
 <p>
 This feature is currently under development.<br><br>
-✨ It will be added in the upcoming update.
+✨ It will be available in the next update.
 </p>
 
 <div class="update">
-Coming in the Next Update
+Coming In Next Update
 </div>
 
 <div class="loading">
-    <div class="bar"></div>
+<div class="bar"></div>
 </div>
 
 <div class="footer">
@@ -137,7 +154,7 @@ Coming in the Next Update
 
 <script>
 setTimeout(function(){
-    window.location.href = "home.html";
+window.location.replace("home.html");
 },8000);
 </script>
 
