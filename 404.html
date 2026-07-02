@@ -44,7 +44,7 @@ body{
 }
 
 .logo{
-    font-size:40px;
+    font-size:45px;
     margin-bottom:15px;
 }
 
@@ -70,60 +70,38 @@ p{
     box-shadow:0 0 20px rgba(255,0,0,0.5);
 }
 
-.footer{
-    margin-top:25px;
-    font-size:13px;
-    color:#bfbfbf;
-}
-    .progress{
-    width:100%;
-    height:8px;
-    background:rgba(255,255,255,0.15);
-    border-radius:20px;
-    overflow:hidden;
-    margin-top:25px;
-}
+/* Loading Line */
 
-.progress-bar{
+.loading-line{
     width:100%;
-    height:100%;
-    background:linear-gradient(90deg,#ff0000,#ff6b6b,#ffffff);
-    animation:countdown 8s linear forwards;
-}
-
-@keyframes countdown{
-    from{
-        width:100%;
-    }
-    to{
-        width:0%;
-    }
-}
-    .loading-line{
-    width:100%;
-    max-width:350px;
     height:6px;
-    margin:30px auto;
-    background:rgba(255,255,255,0.2);
+    background:rgba(255,255,255,0.15);
     border-radius:50px;
     overflow:hidden;
+    margin:30px auto 10px;
 }
 
 .loading-fill{
     width:0%;
     height:100%;
-    background:linear-gradient(90deg,#ff0000,#ff4d4d,#ffffff);
+    background:linear-gradient(90deg,#ff0000,#ff6b6b,#bfbfbf);
     animation:fillBar 8s linear forwards;
 }
 
 @keyframes fillBar{
-    from{
+    0%{
         width:0%;
     }
-    to{
+    100%{
         width:100%;
     }
-        }
+}
+
+.footer{
+    margin-top:20px;
+    font-size:13px;
+    color:#bfbfbf;
+}
 </style>
 
 </head>
@@ -131,40 +109,36 @@ p{
 
 <div class="card">
 
-<div class="logo">🚀</div>
+    <div class="logo">🚀</div>
 
-<h1>Coming Soon</h1>
+    <h1>Coming Soon</h1>
 
-<p>
-This feature is currently under development.<br><br>
-✨ It will be added in the upcoming update.
-Thank you for your patience and support.
-</p>
+    <p>
+        This feature is currently under development.<br><br>
+        ✨ It will be added in the upcoming update.<br>
+        Thank you for your patience and support.
+    </p>
 
-<div class="update">
-Coming in the Next Update
-</div>
-
-<div class="footer">
-© Infinity Spot
-</div>
-
-</div>
-...
-
-</div>
-
-    <div class="loading-line">
-    <div class="loading-fill"></div>
+    <div class="update">
+        Coming in the Next Update
     </div>
 
+    <!-- Loading Line -->
+    <div class="loading-line">
+        <div class="loading-fill"></div>
+    </div>
+
+    <div class="footer">
+        © Infinity Spot
+    </div>
+
+</div>
+
 <script>
-setTimeout(function () {
+setTimeout(function(){
     window.location.href = "home.html";
-}, 8000);
+},8000);
 </script>
 
-</body>
-</html>
 </body>
 </html>
