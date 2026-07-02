@@ -10,12 +10,19 @@ body{
     height:75vh; /* 70–80vh try cheyyam */
     overflow:hidden;
 }
-
-.hero img{
+.movie img{
     width:100%;
-    height:100%;
+    height:220px;
     object-fit:cover;
     display:block;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.4);
+    transition:0.3s ease;
+}
+
+.movie img:hover{
+    transform:scale(1.04);
+    box-shadow:0 12px 35px rgba(255,0,0,0.35);
 }
 
 .start-container{
