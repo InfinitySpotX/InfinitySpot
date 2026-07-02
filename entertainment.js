@@ -1,95 +1,59 @@
-const movies = [
-  {
-    title: "Aaro",
-    poster: "Aaro.jpg",
-    video: "https://www.youtube.com/embed/v9jqDP7U8b8?si=GXxLEIJYgOorr8u5"
-  },
-  {
-    title: "Mareechika",
-    poster: "Mareechika.jpg",
-    video: "https://www.youtube.com/embed/Bj6YTLGktnY?si=4jK9ERCVw1Zr_SzZ"
-  },
-  {
-    title: "Valayam",
-    poster: "Valayam.jpg",
-    video: "https://www.youtube.com/embed/2dI2DTsX3Ek?si=lJsssgtjDt8RShhI"
-  },
-  {
-    title: "Maruvasham",
-    poster: "Maruvasham.jpg",
-    video: "https://www.youtube.com/embed/OthoLwGgY6o?si=wQPP7Muvs6PMs9JG"
-  }
+// Firebase Config
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
 
-  // Add more movies here
-];
+// Initialize
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-// ===========================
-// HOME PAGE
-// ===========================
+// Elements
+const postBtn = document.getElementById("postBtn");
+const message = document.getElementById("message");
+const posts = document.getElementById("posts");
 
-const movieContainer = document.getElementById("movie-container");
+// Post Button
+postBtn.addEventListener("click", async () => {
 
-if (movieContainer) {
-  movies.forEach(movie => {
-    movieContainer.innerHTML += `
-      <div class="movie">
-        <img src="${movie.poster}" alt="${movie.title}">
-        <h3>${movie.title}</h3>
+    const text = message.value.trim();
 
-        <button onclick="openMovie('${movie.title}')">
-          Watch Now
-        </button>
-      </div>
-    `;
-  });
-}
+    if(text === ""){
+        alert("Write something...");
+        return;
+    }
 
-// ===========================
-// OPEN MOVIE
-// ===========================
+    await addDoc(collection(db,"posts"),{
+        user:"User",
+        message:text,
+        createdAt:serverTimestamp()
+    });
 
-function openMovie(title) {
-  localStorage.setItem("movie", title);
-  window.location.href = "watch.html";
-}
+    message.value="";
+});
 
-// ===========================
-// SEARCH MOVIE
-// ===========================
+// Live Posts
+const q = query(collection(db,"posts"), orderBy("createdAt","desc"));
 
-function searchMovie() {
-  let input = document.getElementById("searchBox").value.trim().toLowerCase();
+onSnapshot(q,(snapshot)=>{
 
-  if (input === "") {
-    alert("Please enter a movie name!");
-    return;
-  }
+    posts.innerHTML="";
 
-  const movie = movies.find(m => m.title.toLowerCase() === input);
+    snapshot.forEach((doc)=>{
 
-  if (movie) {
-    localStorage.setItem("movie", movie.title);
-    window.location.href = "entertainment.html";
-  } else {
-    alert("Movie not found!");
-  }
-}
+        const data = doc.data();
 
-// ===========================
-// WATCH PAGE
-// ===========================
+        posts.innerHTML += `
+        <div class="post">
+            <div class="user">${data.user}</div>
+            <div class="text">${data.message}</div>
+        </div>
+        `;
 
-const player = document.getElementById("player");
+    });
 
-if (player) {
-  const movieName = localStorage.getItem("movie");
-
-  const movie = movies.find(m => m.title === movieName);
-
-  if (movie) {
-    player.src = movie.video;
-  } else {
-    alert("Movie not found!");
-    window.location.href = "entertainment.html"; // Change if your home page name is different
-  }
-}
+});
