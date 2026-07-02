@@ -184,4 +184,12 @@ h1{
 button:hover{
   transform: scale(1.05);
 }
+.logo{
+    margin:0;
+    font-size:32px;
+    font-weight:900;
+    color:#ff0000;
+    letter-spacing:1px;
+    text-shadow:0 0 15px rgba(255,0,0,0.8);
+}
 
