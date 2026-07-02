@@ -1,58 +1,72 @@
 body{
     margin:0;
-    background:#000;
-    color:#fff;
-    font-family:Arial,sans-serif;
-}
-
-.heroImage{
-    width:70%;
-    height:75vh; /* 70–80vh try cheyyam */
     overflow:hidden;
-    border-radius:20px;
-}
-.movie img{
-    width:70%;
-    height:65px;
-    object-fit:cover;
-    display:block;
-    border-radius:20px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.4);
-    transition:0.3s ease;
+    font-family:Arial,sans-serif;
+    background:#000;
 }
 
-.movie img:hover{
-    transform:scale(1.04);
-    box-shadow:0 12px 35px rgba(255,0,0,0.35);
-    box-radius:20px;
-}
-
-.start-container{
+.hero-bg{
+    width:100%;
+    height:100vh;
+    background:linear-gradient(-45deg,
+        #000000,
+        #330000,
+        #8b0000,
+        #000000);
+    background-size:400% 400%;
+    animation:bgMove 10s ease infinite;
     display:flex;
     justify-content:center;
     align-items:center;
-    margin:25px 0;
+}
+
+.overlay{
+    text-align:center;
+}
+
+.overlay h1{
+    color:#ff0000;
+    font-size:45px;
+    font-weight:900;
+    text-shadow:0 0 20px #ff0000;
+    animation:glow 2s infinite alternate;
 }
 
 .start-btn{
+    margin-top:40px;
     width:220px;
     height:60px;
     border:none;
     border-radius:40px;
     background:linear-gradient(45deg,#ff0000,#8b0000);
-    color:#fff;
+    color:white;
     font-size:22px;
     font-weight:bold;
-    box-shadow:0 0 20px #ff0000;
-    animation:glow 1.8s infinite alternate;
     cursor:pointer;
+    box-shadow:0 0 20px #ff0000;
+    transition:.2s;
+}
+
+.start-btn:hover{
+    transform:scale(1.05);
+}
+
+.start-btn:active{
+    transform:scale(.95);
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 @keyframes glow{
     from{
-        box-shadow:0 0 10px #ff0000;
+        text-shadow:0 0 10px #ff0000;
     }
     to{
-        box-shadow:0 0 30px #ff0000;
+        text-shadow:0 0 30px #ff0000,
+                    0 0 60px #ff3333;
     }
-}
+        }
