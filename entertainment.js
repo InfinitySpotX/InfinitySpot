@@ -1,59 +1,67 @@
+// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyAcyuhXTQb1wz4f8MWTlnUp5KI7kGfAm1k",
   authDomain: "infinityspot-78ac4.firebaseapp.com",
-  databaseURL: "https://infinityspot-78ac4-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "infinityspot-78ac4",
   storageBucket: "infinityspot-78ac4.firebasestorage.app",
   messagingSenderId: "321996507857",
   appId: "1:321996507857:web:0f263aeeeb2770bd3713f0"
 };
 
-// Initialize
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-// Elements
+// HTML Elements
 const postBtn = document.getElementById("postBtn");
 const message = document.getElementById("message");
 const posts = document.getElementById("posts");
 
-// Post Button
-postBtn.addEventListener("click", async () => {
+// Post Message
+postBtn.addEventListener("click", function () {
 
     const text = message.value.trim();
 
-    if(text === ""){
+    if (text === "") {
         alert("Write something...");
         return;
     }
 
-    await addDoc(collection(db,"posts"),{
-        user:"User",
-        message:text,
-        createdAt:serverTimestamp()
+    db.collection("posts").add({
+        user: "User",
+        message: text,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(function () {
+        message.value = "";
+    })
+    .catch(function (error) {
+        console.error(error);
+        alert("Failed to post.");
     });
 
-    message.value="";
 });
 
-// Live Posts
-const q = query(collection(db,"posts"), orderBy("createdAt","desc"));
+// Load Posts Live
+db.collection("posts")
+.orderBy("createdAt", "desc")
+.onSnapshot(function (snapshot) {
 
-onSnapshot(q,(snapshot)=>{
+    posts.innerHTML = "";
 
-    posts.innerHTML="";
-
-    snapshot.forEach((doc)=>{
+    snapshot.forEach(function (doc) {
 
         const data = doc.data();
 
         posts.innerHTML += `
-        <div class="post">
-            <div class="user">${data.user}</div>
-            <div class="text">${data.message}</div>
-        </div>
+            <div class="post">
+                <div class="user">${data.user}</div>
+                <div class="text">${data.message}</div>
+            </div>
         `;
 
     });
 
+}, function(error){
+    console.error(error);
 });
