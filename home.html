@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>InfinitySpot Home</title>
-  <link rel="stylesheet" href="home.css">
-
-  <!-- 🔥 Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-</head>
-
-<body>
-
-  <!-- TOP BAR -->
-  <div class="topbar">
-    <h2>InfinitySpot</h2>
-
-    <div class="menu" onclick="toggleMenu()">☰</div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+    <title> INFINITY SPOT </title>
+    <link rel="stylesheet"href="style.css">
+    </head>
+      
+      <body>
+     
+      <div class="menu" onclick="toggleMenu()">☰</div>
 
     <div id="dropdown" class="dropdown">
       <p onclick="location.href='game.html'">🎮 Game</p>
@@ -25,43 +20,17 @@
       <p onclick="logout()">🚪 Logout</p>
     </div>
   </div>
-
-  <!-- CREATE POST BOX -->
-  <div class="create-post">
-
-    <!-- TEXT INPUT -->
-    <input id="postText" type="text" placeholder="What's on your mind?">
-
-
-    <!-- POST BUTTON -->
-    <button onclick="addPost()">Post</button>
-
-  </div>
-
-  <!-- FEED -->
-  <div id="feed"></div>
-
-  <!-- BOTTOM NAV -->
-  <div class="bottom-nav">
-    <button onclick="scrollToTop()">🏠</button>
-    <button onclick="focusPostBox()">➕ Post</button>
-    <button onclick="location.href='profile.html'">👤 Profile</button>
-  </div>
-
-  <!-- JS -->
-  <script src="home.js"></script>
-
-  <!-- LOGIN CHECK -->
-  <script>
-    if(localStorage.getItem("loggedIn") !== "true"){
-      window.location.href = "index.html";
-    }
-
-    function logout(){
-      localStorage.removeItem("loggedIn");
-      window.location.href = "index.html";
-    }
-  </script>
-
-</body>
+      
+      <div class="NavigationBar">
+      </div>
+      <hr>
+      <div class="search-container">
+      <input type="text" id="searchBox" placeholder="Search Movies">
+      <button onclick="searchMovie()" >🔍</button>
+      </div>
+      <hr>
+      <h2>#Trending Movies</h2>
+      <div id="movie-container"></div>
+      <script src="script.js"></script>
+    </body>
 </html>
