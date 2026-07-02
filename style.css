@@ -8,13 +8,16 @@ body{
 .hero-bg{
     width:100%;
     height:100vh;
-    background:linear-gradient(-45deg,
-        #000000,
-        #330000,
-        #8b0000,
-        #000000);
-    background-size:400% 400%;
-    animation:bgMove 10s ease infinite;
+    background:linear-gradient(
+        135deg,
+        #000000 0%,
+        #0a0a0a 25%,
+        #220000 50%,
+        #550000 75%,
+        #000000 100%
+    );
+    background-size:300% 300%;
+    animation:bgMove 8s ease infinite;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -25,10 +28,12 @@ body{
 }
 
 .overlay h1{
-    color:#ff0000;
-    font-size:45px;
+    color:#ff1a1a;
+    font-size:46px;
     font-weight:900;
-    text-shadow:0 0 20px #ff0000;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 25px #990000;
     animation:glow 2s infinite alternate;
 }
 
@@ -39,20 +44,22 @@ body{
     border:none;
     border-radius:40px;
     background:linear-gradient(45deg,#ff0000,#8b0000);
-    color:white;
+    color:#fff;
     font-size:22px;
     font-weight:bold;
     cursor:pointer;
-    box-shadow:0 0 20px #ff0000;
-    transition:.2s;
+    box-shadow:0 0 20px rgba(255,0,0,.6);
+    transition:.25s;
 }
 
 .start-btn:hover{
     transform:scale(1.05);
+    box-shadow:0 0 30px rgba(255,0,0,.8);
 }
 
 .start-btn:active{
     transform:scale(.95);
+    background:#555;
 }
 
 @keyframes bgMove{
@@ -63,10 +70,11 @@ body{
 
 @keyframes glow{
     from{
-        text-shadow:0 0 10px #ff0000;
+        text-shadow:0 0 8px #ff0000;
     }
     to{
-        text-shadow:0 0 30px #ff0000,
-                    0 0 60px #ff3333;
+        text-shadow:
+            0 0 20px #ff0000,
+            0 0 40px #660000;
     }
-        }
+         }
