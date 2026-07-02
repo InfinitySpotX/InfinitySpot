@@ -1,65 +1,25 @@
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
     overflow:hidden;
-    font-family:Arial,sans-serif;
-    background:#000;
 }
 
 .hero-bg{
     width:100%;
     height:100vh;
-    background:linear-gradient(
-        135deg,
-        #000000 0%,
-        #0a0a0a 25%,
-        #220000 50%,
-        #550000 75%,
-        #000000 100%
-    );
-    background-size:300% 300%;
-    animation:bgMove 8s ease infinite;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),
+    linear-gradient(135deg,#050505,#0d1b2a,#1b263b,#415a77);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
     display:flex;
     justify-content:center;
     align-items:center;
-}
-
-.overlay{
-    text-align:center;
-}
-
-.overlay h1{
-    color:#ff1a1a;
-    font-size:46px;
-    font-weight:900;
-    text-shadow:
-        0 0 10px #ff0000,
-        0 0 25px #990000;
-    animation:glow 2s infinite alternate;
-}
-
-.start-btn{
-    margin-top:40px;
-    width:220px;
-    height:60px;
-    border:none;
-    border-radius:40px;
-    background:linear-gradient(45deg,#ff0000,#8b0000);
-    color:#fff;
-    font-size:22px;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 0 20px rgba(255,0,0,.6);
-    transition:.25s;
-}
-
-.start-btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 30px rgba(255,0,0,.8);
-}
-
-.start-btn:active{
-    transform:scale(.95);
-    background:#555;
 }
 
 @keyframes bgMove{
@@ -68,13 +28,49 @@ body{
     100%{background-position:0% 50%;}
 }
 
-@keyframes glow{
+.overlay{
+    text-align:center;
+    animation:fadeUp 1.2s ease;
+}
+
+h1{
+    color:#fff;
+    font-size:48px;
+    font-weight:900;
+    letter-spacing:5px;
+    text-shadow:0 0 25px rgba(255,255,255,.4);
+    margin-bottom:40px;
+}
+
+.start-btn{
+    padding:15px 60px;
+    font-size:18px;
+    font-weight:bold;
+    color:#fff;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    background:linear-gradient(90deg,#ff0000,#ff4d4d);
+    box-shadow:0 0 25px rgba(255,0,0,.5);
+    transition:.3s;
+}
+
+.start-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 40px rgba(255,0,0,.8);
+}
+
+.start-btn:active{
+    transform:scale(.95);
+}
+
+@keyframes fadeUp{
     from{
-        text-shadow:0 0 8px #ff0000;
+        opacity:0;
+        transform:translateY(40px);
     }
     to{
-        text-shadow:
-            0 0 20px #ff0000,
-            0 0 40px #660000;
+        opacity:1;
+        transform:translateY(0);
     }
          }
