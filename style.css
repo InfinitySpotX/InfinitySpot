@@ -5,10 +5,11 @@ body{
     font-family:Arial,sans-serif;
 }
 
-.hero{
+.heroImage{
     width:70%;
     height:75vh; /* 70–80vh try cheyyam */
     overflow:hidden;
+    border-radius:20px;
 }
 .movie img{
     width:70%;
