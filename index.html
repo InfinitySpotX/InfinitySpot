@@ -14,71 +14,80 @@
 }
 
 body{
-    overflow:hidden;
-}
-
-.hero-bg{
-    width:100%;
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(-45deg,#000000,#0d1b2a,#1b263b,#415a77);
+    overflow:hidden;
+    background:linear-gradient(-45deg,#000000,#07121d,#14263f,#1b3d5f);
     background-size:400% 400%;
-    animation:bgMove 12s ease infinite;
+    animation:bg 15s ease infinite;
 }
 
-@keyframes bgMove{
+@keyframes bg{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
 
-.overlay{
+.hero-bg{
     text-align:center;
-    animation:fadeUp 1s ease;
 }
 
 h1{
     color:#fff;
-    font-size:48px;
-    font-weight:bold;
-    letter-spacing:5px;
-    margin-bottom:40px;
+    font-size:52px;
+    font-weight:900;
+    letter-spacing:6px;
     text-shadow:0 0 20px rgba(255,255,255,.4);
+    animation:title 1.5s ease;
 }
 
-.start-btn{
-    padding:15px 60px;
-    font-size:18px;
-    font-weight:bold;
-    color:#fff;
-    border:none;
-    border-radius:50px;
-    cursor:pointer;
-    background:linear-gradient(90deg,#ff0000,#ff4d4d);
-    box-shadow:0 0 20px rgba(255,0,0,.5);
-    transition:0.3s;
-}
-
-.start-btn:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 35px rgba(255,0,0,.8);
-}
-
-.start-btn:active{
-    transform:scale(.95);
-}
-
-@keyframes fadeUp{
+@keyframes title{
     from{
         opacity:0;
-        transform:translateY(30px);
+        transform:scale(.8);
     }
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:scale(1);
     }
+}
+
+.start-btn{
+    margin-top:45px;
+    padding:16px 70px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    color:#fff;
+    font-size:18px;
+    font-weight:bold;
+    letter-spacing:2px;
+    background:linear-gradient(90deg,#ff0000,#ff4d4d);
+    box-shadow:0 0 20px rgba(255,0,0,.5);
+    transition:.25s;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.06);
+        box-shadow:0 0 35px rgba(255,0,0,.8);
+    }
+}
+
+.start-btn.clicked{
+    animation:none;
+    transform:scale(.9);
+    box-shadow:0 0 45px rgba(255,0,0,1);
+}
+
+.start-btn:disabled{
+    cursor:not-allowed;
 }
 </style>
 
@@ -86,30 +95,31 @@ h1{
 <body>
 
 <div class="hero-bg">
-    <div class="overlay">
-        <h1>INFINITY SPOT</h1>
 
-        <button class="start-btn" onclick="startApp()">
-            START
-        </button>
-    </div>
+<h1>INFINITY SPOT</h1>
+
+<button class="start-btn" onclick="startApp()">
+START
+</button>
+
 </div>
 
 <script>
 function startApp(){
-    localStorage.setItem("opened","true");
 
-    document.body.style.transition="0.5s";
-    document.body.style.opacity="0";
+const btn=document.querySelector(".start-btn");
 
-    setTimeout(function(){
-        window.location.href="home.html";
-    },500);
+btn.classList.add("clicked");
+btn.innerHTML="LOADING...";
+btn.disabled=true;
+
+setTimeout(function(){
+localStorage.setItem("opened","true");
+window.location.href="home.html";
+},700);
+
 }
 </script>
-    <script>
-alert("HTML Loaded Successfully");
-    </script>
 
 </body>
 </html>
