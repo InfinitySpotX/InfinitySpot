@@ -1,24 +1,11 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  onSnapshot,
-  query,
-  orderBy,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-// Firebase Config
 const firebaseConfig = {
-  apiKey: "AIzaSyAcyuhXTQb1wz4f8MWTlnUp5KI7kGfAm1k",
-  authDomain: "infinityspot-78ac4.firebaseapp.com",
-  databaseURL: "https://infinityspot-78ac4-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "infinityspot-78ac4",
-  storageBucket: "infinityspot-78ac4.firebasestorage.app",
-  messagingSenderId: "321996507857",
-  appId: "1:321996507857:web:30433a9d435365aa3713f0"
+  apiKey: "AIzaSyCEGV0QyJJwReINDfEKzB6FODGA7dV00CE",
+  authDomain: "infinityspot-7f0b8.firebaseapp.com",
+  databaseURL: "https://infinityspot-7f0b8-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "infinityspot-7f0b8",
+  storageBucket: "infinityspot-7f0b8.firebasestorage.app",
+  messagingSenderId: "356283606090",
+  appId: "1:356283606090:web:9bcd0ca6437f1861ea32b3"
 };
 
 // Initialize
