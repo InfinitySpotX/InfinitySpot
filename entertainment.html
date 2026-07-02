@@ -18,7 +18,62 @@
 
 <div id="posts"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="entertainment.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        // Real-time ചാറ്റിനായി നമ്മൾ database (RTDB) ആണ് ഉപയോഗിക്കുന്നത്
+        import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        // 1. നിങ്ങളുടെ ഫയർബേസ് കോൺഫിഗറേഷൻ ഇവിടെ നൽകുക
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            databaseURL: "YOUR_DATABASE_URL", // റിയൽ ടൈം ഡാറ്റാബേസ് ലിങ്ക് വേണം
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Firebase ഇനീഷ്യലൈസ് ചെയ്യുന്നു
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const chatRef = ref(db, "public_messages");
+
+        const messagesDiv = document.getElementById("messages");
+        const usernameInput = document.getElementById("username");
+        const msgInput = document.getElementById("msg-input");
+        const sendBtn = document.getElementById("send-btn");
+
+        // 2. മെസ്സേജ് ഡാറ്റാബേസിലേക്ക് അയക്കുന്നു
+        sendBtn.addEventListener("click", () => {
+            const name = usernameInput.value.trim() || "Anonymous";
+            const text = msgInput.value.trim();
+
+            if (text !== "") {
+                push(chatRef, {
+                    username: name,
+                    message: text,
+                    timestamp: Date.now()
+                });
+                msgInput.value = ""; // ഇൻപുട്ട് ഫീൽഡ് ക്ലിയർ ചെയ്യുന്നു
+            }
+        });
+
+        // എന്റർ കീ അടിച്ചാലും മെസ്സേജ് പോകാൻ
+        msgInput.addEventListener("keypress", (e) => {
+            if (e.key === 'Enter') sendBtn.click();
+        });
+
+        // 3. ഡാറ്റാബേസിൽ പുതിയ മെസ്സേജ് വരുമ്പോൾ അത് സ്ക്രീനിൽ കാണിക്കുന്നു (Real-time)
+        onChildAdded(chatRef, (snapshot) => {
+            const data = snapshot.val();
+            
+            const msgElement = document.createElement("div");
+            msgElement.classList.add("message");
+            msgElement.innerHTML = `<strong>${data.username}</strong> ${data.message}`;
+            
+            messagesDiv.appendChild(msgElement);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight; // ഓട്ടോമാറ്റിക് ആയി താഴേക്ക് സ്ക്രോൾ ചെയ്യാൻ
+        });
 </body>
 </html>
