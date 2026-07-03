@@ -199,7 +199,7 @@ Recommended
 </div>
   </a>
 
-  <a href="watch.htm?movie=Maruvasham">
+  <a href="watch.html?movie=Maruvasham">
 <div class="card" title="Maruvasham">
 <img src="Maruvasham.jpg" alt="Maruvasham">
 </div>
@@ -247,9 +247,14 @@ Recommended
 const player = document.getElementById("player");
 
 if (player) {
-  const movieName = localStorage.getItem("movie");
+  const params = new
+    URLSearchParams(window.location.search);
+  const movieName = params.get("movie");
 
-  const movie = movies.find(m => m.title === movieName);
+  const movie = movies.find(
+    m => m.title.toLowerCase() ===
+      movieName.toLowerCase()
+      );
 
   if (movie) {
     player.src = movie.video;
