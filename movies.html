@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinity Spot</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#0b0b0b;
+color:white;
+padding-bottom:80px;
+}
+
+header{
+position:sticky;
+top:0;
+background:#111;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 15px rgba(0,0,0,.4);
+z-index:100;
+}
+
+.logo{
+font-size:26px;
+font-weight:bold;
+color:#ff2d2d;
+}
+
+.search{
+margin:15px;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:30px;
+background:#222;
+color:white;
+font-size:16px;
+outline:none;
+}
+
+.banner{
+height:180px;
+margin:15px;
+border-radius:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+font-weight:bold;
+background:linear-gradient(135deg,#ff0000,#3b0000);
+}
+
+.section-title{
+font-size:22px;
+margin:20px 15px 10px;
+font-weight:bold;
+}
+
+.movies{
+display:flex;
+overflow-x:auto;
+gap:15px;
+padding:0 15px 20px;
+scroll-behavior:smooth;
+}
+
+.movies::-webkit-scrollbar{
+display:none;
+}
+
+.card{
+min-width:140px;
+height:210px;
+border-radius:15px;
+overflow:hidden;
+background:#1b1b1b;
+transition:.3s;
+box-shadow:0 4px 10px rgba(0,0,0,.5);
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.bottom{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#111;
+display:flex;
+justify-content:space-around;
+padding:15px 0;
+box-shadow:0 -2px 15px rgba(0,0,0,.4);
+}
+
+.bottom button{
+background:none;
+border:none;
+color:white;
+font-size:15px;
+cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<div class="logo">INFINITY SPOT</div>
+</header>
+
+<div class="search">
+<input type="text" placeholder="Search Movies...">
+</div>
+
+<div class="banner">
+🔥 Featured Movie
+</div>
+
+<div class="section-title">
+Trending
+</div>
+
+<div class="movies">
+
+<div class="card">
+<img src="Aaro.jpg" alt="Leo">
+</div>
+
+<div class="card">
+<img src="Mareechika.jpg" alt="KGF 2">
+</div>
+
+<div class="card">
+<img src="Valayam.jpg" alt="Kalki">
+</div>
+
+<div class="card">
+<img src="Maruvasham.jpg" alt="Pushpa 2">
+</div>
+
+<div class="card">
+<img src="posters/vikram.jpg" alt="Vikram">
+</div>
+
+</div>
+
+<div class="section-title">
+Recommended
+</div>
+
+<div class="movies">
+
+<div class="card">
+<img src="Valayam.jpg" alt="">
+</div>
+
+<div class="card">
+<img src="Mareechika.jpg" alt="">
+</div>
+
+<div class="card">
+<img src="Aaro.jpg" alt="">
+</div>
+
+<div class="card">
+<img src="Maruvasham.jpg" alt="">
+</div>
+
+</div>
+
+<div class="bottom">
+<button>🏠 Home</button>
+<button>🔥 Trending</button>
+<button>❤️ Favorites</button>
+<button>👤 Profile</button>
+</div>
+
+</body>
+  </html>
