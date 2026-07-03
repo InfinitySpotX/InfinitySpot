@@ -115,8 +115,5 @@ if (player) {
 // MENU TOGGLE (CRASH SAFE)
 // ===========================
 function toggleMenu() {
-  const menu = document.querySelector(".menu");
-  if (menu) {
-    menu.classList.toggle("show");
-  }
-}
+    document.getElementById("dropdown").classList.toggle("show");
+                          }
