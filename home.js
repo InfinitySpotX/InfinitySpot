@@ -98,35 +98,4 @@ if (player) {
 // MENU ================
 function toggleMenu() {
     document.getElementById("dropdown").classList.toggle("show");
-          }
-
-
-// ===========================
-// WATCH PAGE
-// ===========================
-
-const player = document.getElementById("player");
-
-if (player) {
-  const params = new
-    URLSearchParams(window.location.search);
-  const movieName = params.get("movie");
-
-  const movie = movies.find(
-    m => m.title.toLowerCase() ===
-      movieName.toLowerCase()
-      );
-
-  if (movie) {
-    player.src = movie.video;
-  } else {
-    alert("Movie not found!");
-    window.location.href = "movies.html"; // Change if your home page name is different
-  }
- }
-
-
-  function openMovie(title) {
-   localStorage.setItem("movie", title);
-   window.location.href = "watch.html";
-  }
+}
