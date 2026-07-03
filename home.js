@@ -99,10 +99,5 @@ if (player) {
 }
 
 functions toggleMenu() {
-  const menu = 
-    document.getElementById("dropdown");
-
-  if (menu) {
-    menu.classList.toggle("show');
-                          }
+ document.getElementById("dropdown").classList.toggle("show");
 }
