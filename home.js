@@ -1,3 +1,6 @@
+// ===========================
+// MOVIES DATA
+// ===========================
 const movies = [
   {
     title: "Aaro",
@@ -12,90 +15,85 @@ const movies = [
   {
     title: "Valayam",
     poster: "Valayam.jpg",
-    video: "https://www.youtube.com/embed/2dI2DTsX3Ek?si=lJsssgtjDt8RShhI"
+    video: "https://www.youtube.com/embed/2dI2DTsX3Ek"
   },
   {
     title: "Maruvasham",
     poster: "Maruvasham.jpg",
-    video: "https://www.youtube.com/embed/OthoLwGgY6o?si=wQPP7Muvs6PMs9JG"
+    video: "https://www.youtube.com/embed/OthoLwGgY6o"
   }
-
-  // Add more movies here
 ];
 
-// ===========================
-// HOME PAGE
-// ===========================
 
+// ===========================
+// OPEN MOVIE (FOR ALL PAGES)
+// ===========================
+function openMovie(title) {
+  window.location.href = "watch.html?movie=" + encodeURIComponent(title);
+}
+
+
+// ===========================
+// HOME / MOVIES PAGE RENDER
+// ===========================
 const movieContainer = document.getElementById("movie-container");
 
 if (movieContainer) {
+  movieContainer.innerHTML = "";
+
   movies.forEach(movie => {
     movieContainer.innerHTML += `
       <div class="movie">
         <img src="${movie.poster}" alt="${movie.title}">
         <h3>${movie.title}</h3>
-
-        <button onclick="openMovie('${movie.title}')">
-          Watch Now
-        </button>
+        <button onclick="openMovie('${movie.title}')">Watch</button>
       </div>
     `;
   });
 }
 
-// ===========================
-// OPEN MOVIE
-// ===========================
-
-function openMovie(title) {
-  localStorage.setItem("movie", title);
-  window.location.href = "watch.html";
-}
 
 // ===========================
-// SEARCH MOVIE
+// SEARCH FUNCTION
 // ===========================
-
 function searchMovie() {
   let input = document.getElementById("searchBox").value.trim().toLowerCase();
 
-  if (input === "") {
-    alert("Please enter a movie name!");
-    return;
-  }
-
-  const movie = movies.find(m => m.title.toLowerCase() === input);
+  const movie = movies.find(
+    m => m.title.toLowerCase() === input
+  );
 
   if (movie) {
-    localStorage.setItem("movie", movie.title);
-    window.location.href = "watch.html";
+    openMovie(movie.title);
   } else {
     alert("Movie not found!");
   }
 }
 
-// ===========================
-// WATCH PAGE
-// ===========================
 
+// ===========================
+// WATCH PAGE LOGIC
+// ===========================
 const player = document.getElementById("player");
 
 if (player) {
-  const movieName = localStorage.getItem("movie");
 
-  const movie = movies.find(m => m.title === movieName);
+  const params = new URLSearchParams(window.location.search);
+  let movieName = params.get("movie");
+
+  // fallback (if needed)
+  if (!movieName) {
+    movieName = localStorage.getItem("movie");
+  }
+
+  const movie = movies.find(
+    m => m.title.toLowerCase() === (movieName || "").toLowerCase()
+  );
 
   if (movie) {
     player.src = movie.video;
   } else {
     alert("Movie not found!");
-    window.location.href = "home.html"; // Change if your home page name is different
+    window.location.href = "movies.html";
   }
-}
-
-// ===========================
-// MENU ================
-function toggleMenu() {
-    document.getElementById("dropdown").classList.toggle("show");
 }
