@@ -97,3 +97,12 @@ if (player) {
     window.location.href = "movies.html";
   }
 }
+
+functions toggleMenu() {
+  const menu = 
+    document.getElementById("dropdown");
+
+  if (menu) {
+    menu.classList.toggle("show');
+                          }
+}
