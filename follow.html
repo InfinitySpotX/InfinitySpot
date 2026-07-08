@@ -48,35 +48,61 @@
     </div>
 
     <script>
-        // ഇപ്പോൾ ഓരോ വീഡിയോയിലും thumbnail-ഉം embedUrl-ഉം ഉണ്ട്
-        const allVideos = [
-            { id: 1, title: "Cinematic Journey", creator: "Director_A", thumbnail: "https://picsum.photos/500/250", embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-            { id: 2, title: "Urban Beats", creator: "Director_B", thumbnail: "https://picsum.photos/500/251", embedUrl: "https://www.youtube.com/embed/tgbNymZ7vqY" }
-        ];
+        // 1. വീഡിയോ ഡാറ്റാബേസ് (ഇത് നിങ്ങളുടെ ഡാറ്റാബേസ് പോലെ പ്രവർത്തിക്കും)
+const allVideos = [
+    { id: 1, title: "Cinematic Journey", creator: "Jijo", embedUrl: "https://www.youtube.com/embed/Bj6YTLGktnY?si=4jK9ERCVw1Zr_SzZ" },
+    { id: 2, title: "Action Movies", creator: "Filmstar", embedUrl: "https://www.youtube.com/embed/OthoLwGgY6o?si=wQPP7Muvs6PMs9JG" },
+    { id: 3, title: "Nature Vibes", creator: "Director_C", embedUrl: "https://www.youtube.com/embed/example3" },
+    { id: 4, title: "Action Master", creator: "Director_A", embedUrl: "https://www.youtube.com/embed/example4" }
+];
 
-        let following = ["Director_A"]; // Test-നായി A-യെ ഫോളോ ചെയ്യുന്നു
+// 2. യൂസർ ഫോളോ ചെയ്തിരിക്കുന്നവരുടെ ലിസ്റ്റ്
+let following = ["Director_A"]; 
 
-        function renderVideos() {
-            const feed = document.getElementById('video-feed');
-            feed.innerHTML = '';
-            
-            allVideos.filter(v => following.includes(v.creator)).forEach(video => {
-                const div = document.createElement('div');
-                div.className = 'video-card';
-                div.innerHTML = `
-                    <div class="media-container">
-                        <!-- ഇവിടെ ആദ്യം തമ്പ്നെയിൽ കാണിക്കാം, ക്ലിക്ക് ചെയ്താൽ വീഡിയോ ലോഡ് ചെയ്യാം -->
-                        <iframe src="${video.embedUrl}" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <h3>${video.title}</h3>
-                    <p style="color: #888;">Creator: ${video.creator}</p>
-                    <button onclick="alert('Followed!')">Following</button>
-                `;
-                feed.appendChild(div);
-            });
-        }
+// 3. വീഡിയോകൾ റെൻഡർ ചെയ്യാനുള്ള ഫങ്‌ഷൻ
+function renderVideos() {
+    const feed = document.getElementById('video-feed');
+    feed.innerHTML = '';
+    
+    // ലോജിക്: ഫോളോ ചെയ്തവരെ ആദ്യം കാണിക്കാൻ സോർട്ടിംഗ് (Sorting)
+    const sortedVideos = [...allVideos].sort((a, b) => {
+        const isAFollowing = following.includes(a.creator) ? 1 : 0;
+        const isBFollowing = following.includes(b.creator) ? 1 : 0;
+        return isBFollowing - isAFollowing; // ഇത് ഫോളോ ചെയ്തവരെ ടോപ്പിൽ നിർത്തും
+    });
 
-        renderVideos();
+    sortedVideos.forEach(video => {
+        const isFollowing = following.includes(video.creator);
+        const div = document.createElement('div');
+        div.className = 'video-card';
+        
+        div.innerHTML = `
+            <div class="media-container">
+                <iframe src="${video.embedUrl}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <h3>${video.title}</h3>
+            <p style="color: #888;">Creator: ${video.creator}</p>
+            <button class="${isFollowing ? 'following' : ''}" onclick="toggleFollow('${video.creator}')">
+                ${isFollowing ? 'Following' : 'Follow Creator'}
+            </button>
+        `;
+        feed.appendChild(div);
+    });
+}
+
+// 4. ഫോളോ ബട്ടൺ പ്രവർത്തിപ്പിക്കാനുള്ള ഫങ്‌ഷൻ
+function toggleFollow(creator) {
+    if (following.includes(creator)) {
+        following = following.filter(f => f !== creator);
+    } else {
+        following.push(creator);
+    }
+    renderVideos(); // ഡാറ്റ മാറിയാൽ ലിസ്റ്റ് അപ്‌ഡേറ്റ് ചെയ്യും
+}
+
+// ആദ്യമായി പേജ് ലോഡ് ചെയ്യുമ്പോൾ വീഡിയോകൾ കാണിക്കാൻ
+renderVideos();
+
     </script>
 </body>
 </html>
