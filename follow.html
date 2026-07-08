@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Modern Dark Theme */
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: radial-gradient(circle at center, #1a1a2e, #0f0f1a); 
+            color: #fff; 
+            margin: 0; padding: 40px; 
+            min-height: 100vh;
+        }
+
+        .container { max-width: 600px; margin: auto; }
+
+        /* Premium Card Style (Glassmorphism) */
+        .video-card { 
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px; margin-bottom: 20px; 
+            border-radius: 16px;
+            transition: transform 0.3s ease, border 0.3s ease;
+        }
+
+        .video-card:hover { 
+            border: 1px solid rgba(233, 30, 99, 0.5);
+            transform: translateY(-5px);
+        }
+
+        /* Premium Button */
+        button { 
+            padding: 10px 20px; cursor: pointer; border: none; 
+            border-radius: 50px; font-weight: 600;
+            background: linear-gradient(45deg, #e91e63, #ff4081);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        button:active { transform: scale(0.95); }
+        button.following { background: #333; color: #888; box-shadow: none; }
+
+        h2 { text-align: center; margin-bottom: 40px; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>JJ EMPIRE FEED</h2>
+        <div id="video-feed"></div>
+    </div>
+
+    <script>
+        const allVideos = [
+            { id: 1, title: "Cinematic Journey", creator: "Director_A" },
+            { id: 2, title: "Urban Beats", creator: "Director_B" },
+            { id: 3, title: "The Hidden Script", creator: "Director_A" }
+        ];
+
+        let following = [];
+
+        function renderVideos() {
+            const feed = document.getElementById('video-feed');
+            feed.innerHTML = '';
+            
+            const displayList = following.length === 0 ? allVideos : 
+                                allVideos.filter(v => following.includes(v.creator));
+
+            displayList.forEach(video => {
+                const div = document.createElement('div');
+                div.className = 'video-card';
+                div.innerHTML = `
+                    <h3>${video.title}</h3>
+                    <p style="color: #aaa;">Creator: ${video.creator}</p>
+                    <button class="${following.includes(video.creator) ? 'following' : ''}" 
+                            onclick="toggleFollow('${video.creator}')">
+                        ${following.includes(video.creator) ? 'Following' : 'Follow Creator'}
+                    </button>
+                `;
+                feed.appendChild(div);
+            });
+        }
+
+        function toggleFollow(creator) {
+            if (following.includes(creator)) {
+                following = following.filter(f => f !== creator);
+            } else {
+                following.push(creator);
+            }
+            renderVideos();
+        }
+
+        renderVideos();
+    </script>
+</body>
+</html>
