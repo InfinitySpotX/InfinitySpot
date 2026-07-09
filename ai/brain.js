@@ -27,6 +27,10 @@ contains(text,list){
 reply(message){
 
 message = message.toLowerCase().trim();
+    
+    if(KNOWLEDGE[message]){
+    return KNOWLEDGE[message];
+    }
 
 // Greeting
 if(this.contains(message,this.greetings)){
