@@ -1,26 +1,71 @@
 const SPYMO_AI = {
 
+greetings: [
+"hello","hi","hey","good morning","good afternoon","good evening"
+],
+
+bye: [
+"bye","goodbye","see you","see ya"
+],
+
+howAreYou: [
+"how are you",
+"how are u",
+"how r u"
+],
+
+whoAreYou: [
+"who are you",
+"your name",
+"what are you"
+],
+
+contains(text,list){
+    return list.some(item => text.includes(item));
+},
+
 reply(message){
 
 message = message.toLowerCase().trim();
 
-if(message==="hello" || message==="hi"){
-return "Hello 👋";
+// Greeting
+if(this.contains(message,this.greetings)){
+    return "Hello! 👋 How can I help you?";
 }
 
-if(message==="how are you"){
-return "I'm doing great! 😊";
+// How are you
+if(this.contains(message,this.howAreYou)){
+    return "I'm doing great! Thanks for asking. 😊";
 }
 
-if(message==="who are you"){
-return "I am SPYMO AI.";
+// Who are you
+if(this.contains(message,this.whoAreYou)){
+    return "I am SPYMO AI, created using HTML, CSS and JavaScript.";
 }
 
-if(message==="bye"){
-return "See you later 👋";
+// Time
+if(message.includes("time")){
+    return new Date().toLocaleTimeString();
 }
 
-return "Sorry, I don't understand.";
+// Date
+if(message.includes("date")){
+    return new Date().toDateString();
+}
+
+// Calculator
+if(/^[0-9+\-*/(). ]+$/.test(message)){
+    try{
+        return "Answer: " + eval(message);
+    }catch(e){}
+}
+
+// Bye
+if(this.contains(message,this.bye)){
+    return "Goodbye! 👋 Have a nice day.";
+}
+
+return "I don't know that yet. Teach me in the next version.";
 }
 
 };
