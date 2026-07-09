@@ -20,6 +20,29 @@ whoAreYou: [
 "what are you"
 ],
 
+// Remember name
+const remembered = Memory.rememberName(message);
+
+if(remembered){
+    return remembered;
+}
+
+// Ask name
+if(
+message === "what's my name" ||
+message === "what is my name" ||
+message === "my name"
+){
+
+const name = Memory.getName();
+
+if(name){
+    return "Your name is " + name + ".";
+}
+
+return "I don't know your name yet.";
+}
+    
 contains(text,list){
     return list.some(item => text.includes(item));
 },
