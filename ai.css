@@ -1,67 +1,101 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-    background:linear-gradient(to bottom,#0a0a0a,#141414,#1a0000,#000000);
-    color:white;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+background:#111827;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 }
 
-/* Button */
-button{
-  background:#7A0000;
-  color:white;
-  border:none;
-  padding:10px 15px;
-  border-radius:8px;
-  margin-top:10px;
+.app{
+width:100%;
+max-width:420px;
+height:95vh;
+background:#1f2937;
+display:flex;
+flex-direction:column;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 0 25px rgba(0,0,0,.4);
 }
 
-/* Input box */
+header{
+background:#2563eb;
+padding:18px;
+text-align:center;
+color:#fff;
+}
+
+header p{
+font-size:14px;
+opacity:.9;
+}
+
+.chat-box{
+flex:1;
+padding:15px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+gap:10px;
+background:#111827;
+}
+
+.message{
+max-width:80%;
+padding:12px;
+border-radius:12px;
+line-height:1.5;
+font-size:15px;
+word-wrap:break-word;
+}
+
+.bot{
+background:#374151;
+color:#fff;
+align-self:flex-start;
+}
+
+.user{
+background:#2563eb;
+color:#fff;
+align-self:flex-end;
+}
+
+.input-area{
+display:flex;
+padding:12px;
+background:#1f2937;
+}
+
 input{
-  width:80%;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  margin-top:10px;
+flex:1;
+padding:12px;
+border:none;
+outline:none;
+border-radius:10px;
+background:#374151;
+color:#fff;
+font-size:15px;
 }
 
-/* AI Box */
-#aiBox{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#111;
-  border-top:2px solid #7A0000;
-  padding:15px;
-  border-radius:15px 15px 0 0;
-  animation: slideUp 0.3s ease-in-out;
+button{
+margin-left:10px;
+padding:12px 18px;
+border:none;
+border-radius:10px;
+background:#2563eb;
+color:#fff;
+cursor:pointer;
+font-weight:bold;
 }
 
-/* Reply text */
-#aiReply{
-  margin-bottom:10px;
-  color:#00ffcc;
-  font-size:14px;
-}
-
-/* Animation */
-@keyframes slideUp{
-  from{
-    transform:translateY(100%);
-  }
-  to{
-    transform:translateY(0);
-  }
-}
-.container{
-    width:90%;
-    max-width:500px;
-    text-align:center;
-    padding:40px 30px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,0,0,0.3);
-    border-radius:18px;
-    box-shadow:0 0 25px rgba(255,0,0,0.2);
+button:hover{
+background:#1d4ed8;
 }
