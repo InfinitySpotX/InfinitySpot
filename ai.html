@@ -1,101 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Infinity Spot AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPYMO AI</title>
 
-  <style>
-    /* 🌌 Animated Background */
-    body{
-      margin:0;
-      font-family:Arial;
-      color:white;
-      overflow:hidden;
-      background: linear-gradient(-45deg, #000, #2b0000, #000, #4a0000);
-      background-size: 400% 400%;
-      animation: bg 10s ease infinite;
-      height:100vh;
-    }
-
-    @keyframes bg{
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
-    }
-
-    h2{
-      text-align:center;
-      color:#7A0000;
-      margin-top:10px;
-    }
-
-    /* Movie section */
-    #movies{
-      padding:10px;
-      text-align:center;
-    }
-
-    /* Chat area */
-    #chatArea{
-      position:fixed;
-      bottom:0;
-      width:100%;
-      background:#111;
-      padding:10px;
-      border-top:2px solid #7A0000;
-    }
-
-    input{
-      width:70%;
-      padding:10px;
-      border:none;
-      border-radius:8px;
-      background:#222;
-      color:white;
-    }
-
-    button{
-      padding:10px;
-      background:#7A0000;
-      color:white;
-      border:none;
-      border-radius:8px;
-    }
-
-    /* Answer box (NOW ABOVE INPUT) */
-    #a{
-      position:fixed;
-      bottom:70px;
-      width:90%;
-      left:5%;
-      background:#111;
-      padding:10px;
-      border-left:4px solid #7A0000;
-      color:#00ffcc;
-      border-radius:10px;
-      min-height:40px;
-    }
-  </style>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h2>🎬 Infinity Spot AI</h2>
+<div class="app">
 
-<!-- 🎬 MOVIE SECTION -->
-<div id="movies">
-  <p>🎬 Movie 1 - Action Film</p>
+<header>
+<h1>🤖 SPYMO AI</h1>
+<p>Offline AI Assistant</p>
+</header>
+
+<div id="chatBox" class="chat-box">
+
+<div class="bot message">
+Hello! 👋 I am <b>SPYMO AI</b>.<br>
+How can I help you today?
 </div>
 
-<!-- 🤖 ANSWER (ABOVE INPUT BAR) -->
-<div id="a">👋 Ask something...</div>
-
-<!-- CHAT INPUT (BOTTOM) -->
-<div id="chatArea">
-  <input id="q" placeholder="Ask AI..." />
-  <button onclick="ask()">Send</button>
 </div>
 
+<div class="input-area">
+
+<input
+type="text"
+id="userInput"
+placeholder="Type your message..."
+autocomplete="off">
+
+<button id="sendBtn">
+Send
+</button>
+
+</div>
+
+</div>
+<script src="ai/knowledge.js"></script>
+<script src="ai/memory.js"></script>
+<script src="ai/logic.js"></script>
+<script src="ai/learning.js"></script>
+<script src="ai/response.js"></script>
+<script src="ai/brain.js"></script>
 <script src="ai.js"></script>
 
 </body>
