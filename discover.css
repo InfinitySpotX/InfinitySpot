@@ -1,0 +1,205 @@
+/* ========= RESET ========= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#090909;
+    color:#ffffff;
+    overflow-x:hidden;
+}
+
+/* ========= HERO ========= */
+
+.hero{
+    position:relative;
+    height:45vh;
+    display:flex;
+    align-items:flex-end;
+    padding:35px;
+
+    background:
+    linear-gradient(
+        to top,
+        #090909 0%,
+        rgba(9,9,9,.55) 60%,
+        rgba(0,0,0,.20)
+    ),
+    url("Infinity.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:650px;
+}
+
+.hero h1{
+    font-size:42px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#d8d8d8;
+    line-height:1.6;
+    font-size:15px;
+}
+
+/* ========= SECTION ========= */
+
+.section{
+    margin-top:35px;
+}
+
+.section h2{
+    font-size:22px;
+    margin:0 18px 18px;
+    font-weight:700;
+}
+
+/* ========= HORIZONTAL ROW ========= */
+
+.movie-row{
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    padding:0 18px 20px;
+    scroll-snap-type:x mandatory;
+}
+
+.movie-row::-webkit-scrollbar{
+    height:7px;
+}
+
+.movie-row::-webkit-scrollbar-thumb{
+    background:#444;
+    border-radius:50px;
+}
+
+/* ========= MOVIE CARD ========= */
+
+.movie-card{
+    min-width:210px;
+    scroll-snap-align:start;
+
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-radius:22px;
+    overflow:hidden;
+
+    transition:0.35s ease;
+}
+
+.movie-card:hover{
+    transform:translateY(-8px) scale(1.04);
+
+    border-color:#ff4747;
+
+    box-shadow:0 20px 45px rgba(255,60,60,.25);
+}
+
+.movie-card img{
+    width:100%;
+    height:270px;
+    object-fit:cover;
+}
+
+.movie-info{
+    padding:15px;
+}
+
+.movie-title{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.meta{
+    display:flex;
+    justify-content:space-between;
+
+    color:#bcbcbc;
+    font-size:13px;
+
+    margin-bottom:12px;
+}
+
+.tag{
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:40px;
+
+    background:#ff3434;
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+/* ========= CARD ANIMATION ========= */
+
+.movie-card{
+    animation:fadeUp .6s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ========= RESPONSIVE ========= */
+
+@media (max-width:768px){
+
+    .hero{
+        height:34vh;
+        padding:22px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .movie-card{
+        min-width:170px;
+    }
+
+    .movie-card img{
+        height:220px;
+    }
+
+    .section h2{
+        font-size:18px;
+    }
+
+  }
