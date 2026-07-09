@@ -1,25 +1,33 @@
-function ask(){
+const input = document.getElementById("userInput");
+const chatBox = document.getElementById("chatBox");
+const sendBtn = document.getElementById("sendBtn");
 
-  let q = document.getElementById("q").value.toLowerCase();
-  let a = "";
+function sendMessage(){
 
-  if(q.includes("hello") || q.includes("hi") || q.includes("hey") || q.includes("Hai") || q.includes("Hi")){
-    a = "👋 Hello Bro! Welcome to Infinity Spot";
-  }
-  else if(q.includes("movie") || q.includes("Movie") || q.includes("Movies")){
-    a = "🎬 Check Movie section above";
-  }
-  else if(q.includes("Aaro")){
-    a = "Horror investigation thriller created by filmstar";
-  }
-  else{
-    a = "😅 I don't understand that";
-  }
+const text = input.value.trim();
 
-  // ⏱️ 3 second delay
-  document.getElementById("a").innerText = "Thinking... 🤖";
+if(text==="") return;
 
-  setTimeout(function(){
-    document.getElementById("a").innerText = a;
-  }, 3000);
+const msg = document.createElement("div");
+msg.className="message user";
+msg.textContent=text;
+
+chatBox.appendChild(msg);
+
+input.value="";
+
+chatBox.scrollTop=chatBox.scrollHeight;
+
 }
+
+sendBtn.onclick=sendMessage;
+
+input.addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+
+sendMessage();
+
+}
+
+});
