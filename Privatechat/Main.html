@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfinitySpot Community</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="top-bar">
+        <button class="back-btn" onclick="history.back()">
+            <span class="material-icons">arrow_back</span>
+        </button>
+
+        <div class="title-area">
+            <h2>InfinitySpot Community</h2>
+            <p>Creator Community</p>
+        </div>
+    </header>
+
+    <!-- Chat Area -->
+    <main class="chat-container" id="chatContainer">
+
+        <!-- Developer Message Example -->
+        <div class="message developer">
+            <div class="bubble">
+                👑 Welcome to the InfinitySpot Creator Community! Please keep the chat friendly and respectful.
+            </div>
+        </div>
+
+        <!-- User Message Example -->
+        <div class="message user">
+            <div class="bubble">
+                @jijo Hi everyone 👋
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Input Area -->
+    <div class="input-area">
+
+        <input
+            type="text"
+            id="messageInput"
+            placeholder="Type your message..."
+            autocomplete="off"
+        >
+
+        <button id="sendBtn" onclick="sendMessage()">
+            <span class="material-icons">send</span>
+        </button>
+
+    </div>
+
+    <script src="community.js" type="module"></script>
+
+</body>
+</html>
